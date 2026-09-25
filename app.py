@@ -43,4 +43,4 @@ if uploaded_file is not None:
             st.markdown(response.text)
             
         except Exception as e:
-            st.error("Oops! Something went wrong. Make sure it's a valid PDF.")
+           st.error(f"System Error: {e}")
