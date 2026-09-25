@@ -22,7 +22,7 @@ if uploaded_file is not None:
             
             # 2. Connect to Gemini securely
             genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-            model = genai.GenerativeModel("gemini-2.5-flash")
+            model = genai.GenerativeModel("gemini-3.8-flash")
             
             # 3. Give Gemini your specific Indian Job Market instructions
             prompt = """
