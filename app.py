@@ -3,8 +3,8 @@ import google.generativeai as genai
 import PyPDF2
 
 # Design the webpage header
-st.title("🎯 Indian Job Market AI - Resume Analyzer")
-st.write("Upload your resume to see which jobs you qualify for in India and what skills you need to learn.")
+st.title("Upload Your Resume")
+st.write("Get a chance to see which jobs you qualify for in India and what skills you need to learn.")
 
 # File uploader widget
 uploaded_file = st.file_uploader("Upload your Resume (PDF format)", type="pdf")
