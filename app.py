@@ -27,12 +27,12 @@ if uploaded_file is not None:
             # 3. Give Gemini your specific Indian Job Market instructions
             prompt = """
             You are an expert Indian Career Counselor. Analyze this resume text. 
-            Evaluate based on Indian qualification standards (e.g., B.Tech, BCA, B.Com, MBA).
+            Evaluate based on all Indian qualification standards (e.g., B.Tech, BCA, B.Com, MBA).
             Provide exactly this structure:
             1. Match Score (0-100%)
-            2. Top 3 Job Roles in India right now
-            3. Skill Gaps (3 specific tools missing)
-            4. Learning Roadmap (Specific free resources to bridge the gap)
+            2. Top 5 Job Roles in India right now
+            3. Skill Gaps (3 specific tools missing for each)
+            4. Learning Roadmap (describe the skills missing and how can one learn, also if needed provide the user with the free resources available in the internet across all platforms for the user to get a user-friendly suggesstions)
             """
             
             # 4. Get the AI scorecard
