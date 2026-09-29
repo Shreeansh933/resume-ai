@@ -1,24 +1,31 @@
 import streamlit as st
 import google.generativeai as genai
 import PyPDF2
+import docx
 
 # Design the webpage header
 st.title("Upload Your Resume")
 st.write("Get a chance to see which jobs you qualify for in India and what skills you need to learn.")
 
 # File uploader widget
-uploaded_file = st.file_uploader("Upload your Resume (PDF format)", type="pdf")
+uploaded_file = st.file_uploader("Upload your Resume (PDF format or Word format)", type=["pdf" , "docx"])
 
 if uploaded_file is not None:
     if st.button("Analyze My Resume with AI"):
         st.info("🧠 AI is reading your resume... Please wait a few seconds.")
         
         try:
-            # 1. Read the PDF file
-            pdf_reader = PyPDF2.PdfReader(uploaded_file)
+            # 1. Read PDF or Word document text
             resume_text = ""
-            for page in pdf_reader.pages:
-                resume_text += page.extract_text()
+            if uploaded_file.name.endswith(".pdf"):
+                pdf_reader = PyPDF2.PdfReader(uploaded_file)
+                for page in pdf_reader.pages:
+                    extracted_text = page.extract_text()
+                    if extracted_text:
+                        resume_text += extracted_text
+            elif uploaded_file.name.endswith(".docx"):
+                doc = docx.Document(uploaded_file)
+                resume_text = "\n".join([p.text for p in doc.paragraphs if p.text])
             
             # 2. Connect to Gemini securely
             genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
