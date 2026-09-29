@@ -50,7 +50,7 @@ if uploaded_file is not None:
             # 4. Get the AI scorecard WITH A TIMEOUT
             response = model.generate_content(
                 prompt + "\n\nResume Text: " + resume_text,
-                request_options={"timeout": 30}
+                request_options={"timeout": 90}
             )
             
             # 5. Show it on screen
